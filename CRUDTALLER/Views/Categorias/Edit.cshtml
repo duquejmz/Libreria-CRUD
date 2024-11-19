@@ -1,0 +1,58 @@
+﻿@model CRUDCamilaDuqueEF.Models.Categoria
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Editar Categoría</h1>
+
+<style>
+    .btn-custom {
+        background-color: #e0aaff; /* Morado claro */
+        color: white; /* Texto blanco */
+        padding: 10px 20px; /* Padding uniforme */
+        border-radius: 5px; /* Bordes redondeados */
+        width: 48%;
+        margin: 10px 0; /* Espacio arriba y abajo de cada botón */
+        text-align: center; /* Asegura que el texto esté centrado */
+        text-decoration: none; /* Quitar el subrayado del enlace */
+        display: inline-block; /* Para asegurar que el enlace se vea como un botón */
+    }
+
+    .btn-custom:hover {
+        background-color: #7a3e9e; /* Un morado más oscuro al pasar el cursor */
+        text-decoration: none; /* Eliminar subrayado en el hover */
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Edit" class="bg-light p-4 rounded shadow-sm">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="CodigoCategoria" />
+
+                <div class="form-group mb-3">
+                    <label asp-for="Nombre" class="control-label font-weight-bold"></label>
+                    <input asp-for="Nombre" class="form-control" placeholder="Ingrese el nombre de la categoría" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+
+                <div class="form-group text-center">
+                    <input type="submit" value="Guardar" class="btn btn-custom" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-custom">Regresar</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

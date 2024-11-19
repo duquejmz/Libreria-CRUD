@@ -1,0 +1,97 @@
+﻿@model CRUDCamilaDuqueEF.Models.Libro
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Crear Libro</h1>
+
+<style>
+    .btn-custom {
+        background-color: #e0aaff; /* Morado claro */
+        color: white; /* Texto blanco */
+        padding: 10px 20px; /* Padding uniforme */
+        border-radius: 5px; /* Bordes redondeados */
+        width: 48%;
+        margin: 10px 0; /* Espacio arriba y abajo de cada botón */
+        text-align: center; /* Asegura que el texto esté centrado */
+        text-decoration: none; /* Quitar el subrayado del enlace */
+        display: inline-block; /* Para asegurar que el enlace se vea como un botón */
+    }
+
+    .btn-custom:hover {
+        background-color: #7a3e9e; /* Un morado más oscuro al pasar el cursor */
+        text-decoration: none; /* Eliminar subrayado en el hover */
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create" class="bg-light p-4 rounded shadow-sm">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Isbn" class="control-label font-weight-bold"></label>
+                    <input asp-for="Isbn" class="form-control" placeholder="Ingrese el ISBN" />
+                    <span asp-validation-for="Isbn" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Titulo" class="control-label font-weight-bold"></label>
+                    <input asp-for="Titulo" class="form-control" placeholder="Ingrese el título" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Descripcion" class="control-label font-weight-bold"></label>
+                    <input asp-for="Descripcion" class="form-control" placeholder="Ingrese la descripción" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="NombreAutor" class="control-label font-weight-bold"></label>
+                    <input asp-for="NombreAutor" class="form-control" placeholder="Ingrese el nombre del autor" />
+                    <span asp-validation-for="NombreAutor" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Publicacion" class="control-label font-weight-bold"></label>
+                    <input asp-for="Publicacion" type="date" class="form-control" placeholder="Ingrese la publicación" />
+                    <span asp-validation-for="Publicacion" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="FechaRegistro" class="control-label font-weight-bold"></label>
+                    <input asp-for="FechaRegistro" type="date" class="form-control" placeholder="Ingrese la fecha de registro" />
+                    <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="CodigoCategoria" class="control-label font-weight-bold"></label>
+                    <select asp-for="CodigoCategoria" class="form-control" asp-items="ViewBag.CodigoCategoria"></select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="NitEditorial" class="control-label font-weight-bold"></label>
+                    <select asp-for="NitEditorial" class="form-control" asp-items="ViewBag.NitEditorial"></select>
+                </div>
+
+                <div class="form-group text-center">
+                    <input type="submit" value="Crear" class="btn btn-custom" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-custom">Regresar</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

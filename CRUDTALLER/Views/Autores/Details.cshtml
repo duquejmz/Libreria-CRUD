@@ -1,0 +1,82 @@
+﻿@model CRUDCamilaDuqueEF.Models.Autor
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Detalles del Autor</h1>
+
+<style>
+    .btn-custom {
+        background-color: #e0aaff; /* Morado claro */
+        color: white; /* Texto blanco */
+        padding: 10px 20px; /* Padding uniforme */
+        border-radius: 5px; /* Bordes redondeados */
+        width: 100%;
+        margin: 10px 0; /* Espacio arriba y abajo de cada botón */
+        text-align: center; /* Asegura que el texto esté centrado */
+        text-decoration: none; /* Quitar el subrayado del enlace */
+        display: inline-block; /* Para asegurar que el enlace se vea como un botón */
+    }
+
+        .btn-custom:hover {
+            background-color: #7a3e9e; /* Un morado más oscuro al pasar el cursor */
+            text-decoration: none; /* Eliminar subrayado en el hover */
+        }
+
+    .card-custom {
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .card-header-custom {
+        background-color: #e0aaff; /* Morado claro */
+        color: white;
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+        font-weight: bold;
+    }
+
+    .card-body-custom {
+        padding: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Card para los detalles -->
+            <div class="card card-custom">
+                <div class="card-body card-body-custom">
+                    <dl class="row">
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Nombre)
+                        </dd>
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.Apellido)
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Apellido)
+                        </dd>
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.Nacionalidad)
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Nacionalidad)
+                        </dd>
+                    </dl>
+
+                    <div class="text-center">
+                        <a asp-action="Edit" asp-route-id="@Model?.IdAutor" class="btn btn-custom">Editar</a>
+                        <a asp-action="Index" class="btn btn-custom">Regresar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
