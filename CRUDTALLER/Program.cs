@@ -9,9 +9,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BibliotecaDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("conexion")));
 
-builder.Services.AddAntiforgery(options =>
-{
-    options.HeaderName = "X-CSRF-TOKEN"; // Configuración explícita del encabezado
+builder.Services.AddAntiforgery(options => {
+    options.HeaderName = "RequestVerificationToken";
 });
 
 var app = builder.Build();

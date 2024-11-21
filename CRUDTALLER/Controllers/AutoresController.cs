@@ -135,7 +135,7 @@ namespace CRUDCamilaDuqueEF.Controllers
 
         // POST: Autores/DeleteConfirmed/5
         [HttpPost, ActionName("DeleteConfirmed")]
-       // [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try 

@@ -83,6 +83,7 @@
     else
     {
         <table class="table" id="example">
+            @Html.AntiForgeryToken()
             <thead>
                 <tr>
                     <th>
@@ -98,7 +99,6 @@
                 </tr>
             </thead>
             <tbody>
-                <form>@Html.AntiForgeryToken()</form>
                 @foreach (var item in Model)
                 {
                     <tr>
