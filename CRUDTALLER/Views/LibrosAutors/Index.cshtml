@@ -97,6 +97,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
     else
     {
     <table class="table" id="example">
+            @Html.AntiForgeryToken()
         <thead>
         <tr>
             <th>

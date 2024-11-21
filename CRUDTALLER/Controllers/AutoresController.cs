@@ -145,7 +145,7 @@ namespace CRUDCamilaDuqueEF.Controllers
                 {
                     _context.Autors.Remove(Autor);
                     await _context.SaveChangesAsync();
-                    return Json(new { succes = true });
+                    return Json(new { success = true, message = "¡Autor eliminado con exito!" });
                 }
                 return Json(new { success = false, message = "Registro no encontrado" });
             }
@@ -159,8 +159,8 @@ namespace CRUDCamilaDuqueEF.Controllers
             }
             catch (Exception ex)
             {
-                var innerExceptionMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
-                return Json(new { success = false, message = innerExceptionMessage });
+                var innerMessage = ex.InnerException?.Message ?? ex.Message;
+                return Json(new { success = false, message = innerMessage });
             }
         }
         private bool AutorExists(int id)

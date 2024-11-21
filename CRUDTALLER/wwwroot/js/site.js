@@ -1,14 +1,4 @@
-﻿function showAlert(type, message) {
-    return Swal.fire({
-        title: type === 'success' ? '¡Éxito!' : 'Error',
-        text: message,
-        icon: type,
-        confirmButtonText: 'Aceptar'
-    });
-}
-
-
-function confirmDelete(url, element) {
+﻿function confirmDelete(url, element) {
     const token = $('input[name="__RequestVerificationToken"]').val();
 
     Swal.fire({
@@ -28,16 +18,31 @@ function confirmDelete(url, element) {
                 headers: {
                     'RequestVerificationToken': token
                 },
+                dataType: 'json',
                 success: function (response) {
                     if (response.success) {
-                        showAlert('success', 'El registro ha sido eliminado.');
-                        $(element).closest('tr').remove();
+                        Swal.fire({
+                            title: 'Eliminado',
+                            text: response.message,
+                            icon: 'success'
+                        }).then(() => {
+                            $(element).closest('tr').remove();
+                        });
                     } else {
-                        showAlert('error', response.message);
+                        Swal.fire({
+                            title: 'Error',
+                            text: response.message,
+                            icon: 'error'
+                        });
                     }
                 },
                 error: function (xhr, status, error) {
-                    showAlert('error', 'Ocurrió un problema al eliminar el registro: ' + error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Ocurrio un problema al eliminar el registro' + error,
+                        icon: 'error'
+                    });
+                    console.error('Error details: ', xhr.responseText);
                 }
             });
         }

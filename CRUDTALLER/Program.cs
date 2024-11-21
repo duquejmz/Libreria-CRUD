@@ -11,6 +11,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("conexion")));
 
 builder.Services.AddAntiforgery(options => {
     options.HeaderName = "RequestVerificationToken";
+    options.SuppressXFrameOptionsHeader = false;
 });
 
 var app = builder.Build();
